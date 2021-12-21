@@ -25,6 +25,9 @@ body{
     background-color: var(--primary-color);
 }
 
+*{
+	box-sizing: border-box;
+}
 h1,
 h2,
 h3,
@@ -102,21 +105,72 @@ img{
 	background-color: transparent;
 }
 
-.btn-container  a{
+#buscar-button{
 	color: var(--headline-color-on-color);
 	border: 2px solid var(--accent1-color);
 }
 
 
-.btn-container  a:hover{
+#buscar-button:hover{
 	color: white;
 	background-color: var(--accent1-color);	
 }
 
-#buscar-button{
-	color:#FF6700;	
+#buscar-button,#buscar-button2{
+	color:var(--accent1-color);		
 }
 
+
+#buscar-button2:hover{
+	background-color: var(--accent1-color);	
+	color: white;
+}
+.header2-img{
+	background-image: url('../resources/imgs/patos1.jpg');
+	background-size: cover;
+	width: 100%;
+}
+.header2-img h2{
+    text-align: center;
+}
+
+.search-container{
+	margin-top: 3%;
+}
+
+.search-container input{
+	display: inline;		
+}
+
+#list-container{
+	border: 5px solid var(--accent1-color);
+	background-color: white;
+	padding: 7%;
+	padding: 15px;
+    height: 346px;
+    overflow: auto;
+}
+
+#list-container ul{
+	padding: 0;
+}
+
+#list-container ul li{
+	list-style-type: none;
+	margin: 1% 0;
+}
+ 
+ #list-container ul li a{
+	text-decoration: none;
+	color: var(--secondary-color);
+}   
+
+.rounded-line {
+  border-top: 2px solid var(--accent2-color);
+  border-radius: 5px;
+  margin: 0;
+}
+/*small size*/
 @media (max-width: 424px ){
 	.header-img{
 		height: 45vh;
@@ -128,9 +182,20 @@ img{
 	p{
 		font-size: 1em;
 	}
+
+	.header2-img{
+		height: 20vh;
+		padding: 7%;
+	}
+	.search-container{
+		padding: 0;
+	}
+	.search-container input{
+		width: 78%;
+	}
 }
 
-
+/*big size*/
 @media (min-width: 425px ){
 	.header-img{
 		padding: 15%;
@@ -139,6 +204,19 @@ img{
 	p{
 		font-size: 1.2em;
 	}
+	.header2-img{
+		height: 10vh;
+		padding: 15%;
+	}
+	.search-bar{
+		width: 49%;
+    	margin: auto;
+	}
+	.search-container input{
+		width: 88%;
+	}
+	.header2-img h2{
+		font-size: 3em;
+	}
 }
-
 
