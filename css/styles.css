@@ -21,6 +21,11 @@
   --nav-hover-link-color: #FF6700;
   --nav-hover-background-color: white;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body{
     background-color: var(--primary-color);
 }
