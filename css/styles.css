@@ -53,6 +53,16 @@ img{
 	width: 100%;
 }
 
+header nav{
+	height: 9vh;
+}
+header nav ul{
+	list-style-type: none;
+	padding: 0;
+}
+header nav ul li a i{
+	color: #79A9D1;
+}
 
 .header-img{
 	
@@ -83,12 +93,12 @@ img{
     font-weight: 800;
 }
 
-.main-container{
+.message-container{
 	margin:  2% 10%;
 }
 
 .btn-container{
-	margin: 13% 0;	
+	margin: 2% 0;	
 }
 
 .btn-container div{
@@ -123,6 +133,8 @@ img{
 
 #buscar-button,#buscar-button2{
 	color:var(--accent1-color);		
+	    padding: 3px 4%;
+    margin: 0 1%;
 }
 
 
@@ -131,7 +143,7 @@ img{
 	color: white;
 }
 .header2-img{
-	background-image: url('../resources/imgs/patos1.jpg');
+	
 	background-size: cover;
 	width: 100%;
 }
@@ -175,6 +187,19 @@ img{
   border-radius: 5px;
   margin: 0;
 }
+
+.search-bar{
+	margin-bottom: 3%;
+}
+
+footer{
+	text-align: center;
+    margin-top: 7%;
+    background: #65655E;
+    padding-top: 6%;
+}
+
+
 /*small size*/
 @media (max-width: 424px ){
 	.header-img{
@@ -185,10 +210,12 @@ img{
 	    margin-top: 10%;
 	}
 	p{
-		font-size: 1em;
+		font-size: 18px;
+		padding: 0;
 	}
 
 	.header2-img{
+		background-image: url('../resources/imgs/ermita2.jpg');
 		height: 20vh;
 		padding: 7%;
 	}
@@ -210,8 +237,9 @@ img{
 		font-size: 1.2em;
 	}
 	.header2-img{
-		height: 10vh;
-		padding: 15%;
+		background-image: url('../resources/imgs/ermita1.jpg');
+		height: 60vh;
+		padding: 6%;
 	}
 	.search-bar{
 		width: 49%;
