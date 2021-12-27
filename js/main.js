@@ -7,10 +7,11 @@ const storageSessionItem = sessionStorage.getItem("presentPhrase");
 
 if(window.location.href.includes("index.html")){
 	insertIcons();	
-	
 	if(storageSessionItem != "" && storageSessionItem != null){
 		let frase = JSON.parse(storageSessionItem)
-		renderPhrase(frase[0]);
+		if(frase != undefined){
+			renderPhrase(frase[0]);	
+		}
 		sessionStorage.clear();
 	}
 	
@@ -19,11 +20,19 @@ if(window.location.href.includes("index.html")){
 if(window.location.href.includes("list.html")){
 	showPhraseList();	
 }
-// document.getElementById("pato-button").addEventListener("mousedown",function(){
-// 	pressPatitoButtonColor();
-	
-// });
-// 	document.getElementById("pato-button").addEventListener("mouseup",normalPatitoButtonColor());
+if(document.getElementById("pato-button") != null){
+	document.getElementById("pato-button").addEventListener("mouseup",function(){
+		setTimeout(function(){
+			normalPatitoButtonColor("pato-button");
+		},200);	
+	});
+	document.getElementById("pato-button").addEventListener("mousedown",function(){
+		pressPatitoButtonColor("pato-button");
+	});	
+}
+
+
+
 if(document.getElementById("pato-button") != null){
 	document.getElementById("pato-button").addEventListener("click",function(){
 	
@@ -32,14 +41,14 @@ if(document.getElementById("pato-button") != null){
 				return response.json();
 			}
 		}).then(result => {
-
-			renderPhrase(getRandomPhrase(result));
+			if(result != undefined){
+				renderPhrase(getRandomPhrase(result));	
+			}
+			
 		});
 
 	});	
 }
-
-
 
 function getRandomPhrase(data){
 	
@@ -53,22 +62,20 @@ function renderPhrase(frase){
 	fraseContainer.innerHTML = '"'+ frase["description"] +"<br>"+ frase["author"] +'"';
 }
 
-function normalPatitoButtonColor(){
-	console.log("color")
-	document.getElementById("pato-button").style.cssText = 
+function normalPatitoButtonColor(buttonName){
+	
+	document.getElementById(buttonName).style.cssText = 
 	"color: white;"+	
-		"background-color: #ff6700;";
+	"background-color: #ff6700;";
 	    
 }
 
-function pressPatitoButtonColor(){
-	console.log("transparente")
-	document.getElementById("pato-button").style.cssText = 
+function pressPatitoButtonColor(buttonName){
+	document.getElementById(buttonName).style.cssText = 
 	"color: #65655e;"+	
 	"border: 2px solid #ff6700;";
-	    
-	
 }
+
 function normalPatitoButtonColor2(){
 	document.getElementById("pato-button").addEventListener("mouseup",function(event) {
 	    event.preventDefault();
@@ -92,8 +99,16 @@ function showPhraseList(){
 }
 
 function renderPhrasesList(list){
+	let id;
 	convertToShortPhrase(list).forEach(result =>{		
-		document.querySelector("#list-container > ul").innerHTML += '<li>'+(result["id"]+1)+'-<a onclick="showSlectedPhrase('+result["id"]+')">'+result["description"]+" "+ "..."+'</a></li><hr class="rounded-line">';
+		if(typeof result["id"] == "string"){
+			
+			id = "'"+result["id"]+"'"; 
+			result["id"] = 0;
+		}else{
+			id = result["id"];
+		}
+		document.querySelector("#list-container > ul").innerHTML += '<li>'+(result["id"]+1)+'-<a onclick="showSlectedPhrase('+id+')">'+result["description"]+" "+ "..."+'</a></li><hr class="rounded-line">';
 		
 	});
 }
@@ -119,7 +134,12 @@ if(document.getElementById("buscar-button2") != null){
 			
 			let byDescription = findByType("description",searchInput.value);
 			let byAuthor = findByType("author",searchInput.value);
-			if(byDescription.length > 0 && union == 0){
+			let keyPhrase = getSecretItem(searchInput.value)
+
+			if( keyPhrase != undefined){
+				union.push(keyPhrase);
+				console.log(union)
+			}else if(byDescription.length > 0 && union == 0){
 				byDescription.forEach(item => {
 					union.push(item);
 				});

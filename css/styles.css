@@ -203,7 +203,7 @@ footer{
 /*small size*/
 @media (max-width: 424px ){
 	.header-img{
-		height: 45vh;
+		height: 213px;
 		padding: 27% 10% 5% 10%;
 	}
 	.header-text{
@@ -216,7 +216,7 @@ footer{
 
 	.header2-img{
 		background-image: url('../resources/imgs/ermita2.jpg');
-		height: 20vh;
+		height: 116px;
 		padding: 7%;
 	}
 	.search-container{
