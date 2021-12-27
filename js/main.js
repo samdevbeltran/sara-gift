@@ -138,7 +138,6 @@ if(document.getElementById("buscar-button2") != null){
 
 			if( keyPhrase != undefined){
 				union.push(keyPhrase);
-				console.log(union)
 			}else if(byDescription.length > 0 && union == 0){
 				byDescription.forEach(item => {
 					union.push(item);

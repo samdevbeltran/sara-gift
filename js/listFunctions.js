@@ -20,11 +20,13 @@ fetch('./json/keyWords.json').then(response =>{
 });
 
 function showSlectedPhrase(id){
-	id = id.trim();
-	id = id.toLowerCase();
+
 	let result;
 	if(typeof id === "string"){
-
+		id = id.trim();
+		id = id.toLowerCase();
+		
+		
 		switch(id){
 			case "morat":
 				result = [getSecretItem(id)];
@@ -57,8 +59,8 @@ function showSlectedPhrase(id){
 	}
 	
 	sessionStorage.setItem("presentPhrase", JSON.stringify(result));
-	window.location.href = "https://sarapp-patito.herokuapp.com/index.html#message-section";
-	//window.location.href = "http://localhost/giftProyect/index.html#message-section";
+	//window.location.href = "https://sarapp-patito.herokuapp.com/index.html#message-section";
+	window.location.href = "http://localhost/giftProyect/index.html#message-section";
 }
 
 
